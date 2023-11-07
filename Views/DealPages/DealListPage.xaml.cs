@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Praktika.Models;
+using Praktika.Views.DemandPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,54 +14,50 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Praktika.Models;
-using Praktika.Views.ClientPages;
 
-
-namespace Praktika.Views.ClientPages
+namespace Praktika.Views.DealPages
 {
-	/// <summary>
-	/// Логика взаимодействия для ClientListPage.xaml
-	/// </summary>
-	public partial class ClientListPage : Page
-	{
+    /// <summary>
+    /// Логика взаимодействия для DealListPage.xaml
+    /// </summary>
+    public partial class DealListPage : Page
+    {
 		NedvizhdbContext NedvizhdbContext = new NedvizhdbContext();
-		public ClientListPage()
+		public DealListPage()
 		{
 			InitializeComponent();
-			DataContext = NedvizhdbContext.Clients.ToList();
+			DataContext = NedvizhdbContext.Deals.ToList();
 		}
 
 		private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			Client client = ClientsGrid.SelectedItem as Client;
-			if (client == null) return;
-			if (client.Supplies.Count > 0 || client.Demands.Count>0) { MessageBox.Show("Нельзя удалить клиента с предложением или потребностью"); return; }
-			NedvizhdbContext.Clients.Remove(client);
+			Deal deal = DealsGrid.SelectedItem as Deal;
+			if (deal == null) return;
+			NedvizhdbContext.Deals.Remove(deal);
 			NedvizhdbContext.SaveChanges();
 			RefreshUserList();
 		}
 		private void RefreshUserList()
 		{
-			var clients = NedvizhdbContext.Clients.ToList();
-			ClientsGrid.ItemsSource = clients;
+			var demands = NedvizhdbContext.Deals.ToList();
+			DealsGrid.ItemsSource = demands;
 		}
 		private void AddUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			ClientCreatePage clientCreatePage = new ClientCreatePage();
-			Window.GetWindow(this).Content = clientCreatePage;
+			DemandCreatePage demandCreatePage = new DemandCreatePage();
+			Window.GetWindow(this).Content = demandCreatePage;
 		}
 
 		private void EditUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			Client client = ClientsGrid.SelectedItem as Client;
-			if (client == null)
+			Deal deal = DealsGrid.SelectedItem as Deal;
+			if (deal == null)
 			{
 				MessageBox.Show("Выберите клиента для изменения");
 				return;
 			}
-			ClientCreatePage clientCreatePage = new ClientCreatePage(client);
-			Window.GetWindow(this).Content = clientCreatePage;
+			DealCreatePage dealCreatePage = new DealCreatePage(deal);
+			Window.GetWindow(this).Content = dealCreatePage;
 
 		}
 		private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -69,3 +67,4 @@ namespace Praktika.Views.ClientPages
 		}
 	}
 }
+

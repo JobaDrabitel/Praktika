@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Praktika.Models;
+using Praktika.Views.RealtyPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,54 +14,51 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Praktika.Models;
-using Praktika.Views.ClientPages;
 
-
-namespace Praktika.Views.ClientPages
+namespace Praktika.Views.DemandPages
 {
-	/// <summary>
-	/// Логика взаимодействия для ClientListPage.xaml
-	/// </summary>
-	public partial class ClientListPage : Page
-	{
+    /// <summary>
+    /// Логика взаимодействия для DemandListPage.xaml
+    /// </summary>
+    public partial class DemandListPage : Page
+    {
 		NedvizhdbContext NedvizhdbContext = new NedvizhdbContext();
-		public ClientListPage()
+		public DemandListPage()
 		{
 			InitializeComponent();
-			DataContext = NedvizhdbContext.Clients.ToList();
+			DataContext = NedvizhdbContext.Demands.ToList();
 		}
 
 		private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			Client client = ClientsGrid.SelectedItem as Client;
-			if (client == null) return;
-			if (client.Supplies.Count > 0 || client.Demands.Count>0) { MessageBox.Show("Нельзя удалить клиента с предложением или потребностью"); return; }
-			NedvizhdbContext.Clients.Remove(client);
+			Demand demand = DemandsGrid.SelectedItem as Demand;
+			if (demand == null) return;
+			if (demand.Deals.Count > 0) { MessageBox.Show("Нельзя удалить потребность, участвующую в сделке"); return; }
+			NedvizhdbContext.Demands.Remove(demand);
 			NedvizhdbContext.SaveChanges();
 			RefreshUserList();
 		}
 		private void RefreshUserList()
 		{
-			var clients = NedvizhdbContext.Clients.ToList();
-			ClientsGrid.ItemsSource = clients;
+			var demands = NedvizhdbContext.Demands.ToList();
+			DemandsGrid.ItemsSource = demands;
 		}
 		private void AddUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			ClientCreatePage clientCreatePage = new ClientCreatePage();
-			Window.GetWindow(this).Content = clientCreatePage;
+			DemandCreatePage demandCreatePage = new DemandCreatePage();
+			Window.GetWindow(this).Content = demandCreatePage;
 		}
 
 		private void EditUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			Client client = ClientsGrid.SelectedItem as Client;
-			if (client == null)
+			Demand demand = DemandsGrid.SelectedItem as Demand;
+			if (demand == null)
 			{
 				MessageBox.Show("Выберите клиента для изменения");
 				return;
 			}
-			ClientCreatePage clientCreatePage = new ClientCreatePage(client);
-			Window.GetWindow(this).Content = clientCreatePage;
+			DemandCreatePage demandCreatePage = new DemandCreatePage(demand);
+			Window.GetWindow(this).Content = demandCreatePage;
 
 		}
 		private void BackButton_Click(object sender, RoutedEventArgs e)

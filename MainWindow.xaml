@@ -7,5 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
     <WrapPanel>
+        <Button x:Name="ClientListButton" Click="ClientListButton_Click">Client List</Button>
+        <Button x:Name="AgentListButton" Click="AgentListButton_Click">Agent List</Button>
+        <Button x:Name="RealtyListButton" Click="RealtyListButton_Click">Realty List</Button> 
+        <Button x:Name="DemandListButton" Click="DemandListButton_Click">Demand List</Button>
+        <Button x:Name="SupplyListButton" Click="SupplyListButton_Click">Supply List</Button>
+        <Button x:Name="DealListButton" Click="DealListButton_Click">Deal List</Button>
     </WrapPanel>
 </Window>

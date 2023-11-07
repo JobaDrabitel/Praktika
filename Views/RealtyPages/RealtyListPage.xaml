@@ -1,0 +1,40 @@
+﻿<Page x:Class="Praktika.Views.RealtyPages.RealtyListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Praktika.Views.RealtyPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RealtyListPage">
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button HorizontalAlignment="Left" Width="100" x:Name="BackButton" Click="BackButton_Click">Назад</Button>
+        <TextBox x:Name="AddressFilterTextBox"  Width="300" HorizontalAlignment="Center" Margin="150 0 0 0" KeyUp="AddressFilterTextBox_KeyUp" />
+        </StackPanel>
+        <DataGrid Height="325" IsReadOnly="True" x:Name="RealtiesGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Realty ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Address City" Binding="{Binding AddressCity}" />
+                <DataGridTextColumn Header="Address Street" Binding="{Binding AddressStreet}" />
+                <DataGridTextColumn Header="Address House" Binding="{Binding AddressHouse}" />
+                <DataGridTextColumn Header="Address Number" Binding="{Binding AddressNumber}" />
+                <DataGridTextColumn Header="Latitude" Binding="{Binding CoordinateLatitude}" />
+                <DataGridTextColumn Header="Longitude" Binding="{Binding CoordinateLongitude}" />
+                <DataGridTextColumn Header="Total Floor" Binding="{Binding TotalFloor}" />
+                <DataGridTextColumn Header="Total Area" Binding="{Binding TotalArea}" />
+                <DataGridTextColumn Header="Rooms" Binding="{Binding Rooms}" />
+                <DataGridTextColumn Header="Floor" Binding="{Binding Floor}" />
+                <DataGridTextColumn Header="District ID" Binding="{Binding DistrictId}" />
+                <!-- You can add more columns as needed -->
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Удалить" x:Name="DeleteUserButton" Click="DeleteUserButton_Click" VerticalAlignment="Bottom" Width="150" Height="30" HorizontalAlignment="Left" Margin="10" />
+            <Button Content="Изменить" x:Name="EditUserButton" Click="EditUserButton_Click" VerticalAlignment="Bottom" Width="150" Height="30" HorizontalAlignment="Left" Margin="140 10 10 10" />
+            <Button Content="Добавить" x:Name="AddUserButton" Click="AddUserButton_Click" VerticalAlignment="Bottom" Width="150" Height="30" HorizontalAlignment="Right" Margin="140 10 10 10" />
+        </StackPanel>
+    </StackPanel>
+</Page>

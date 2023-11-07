@@ -17,43 +17,43 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Praktika.Views.ClientPages
+namespace Praktika.Views.AgentPages
 {
 	/// <summary>
-	/// Логика взаимодействия для ClientCreatePage.xaml
+	/// Логика взаимодействия для AgentCreatePage.xaml
 	/// </summary>
-	public partial class ClientCreatePage : Page
+	public partial class AgentCreatePage : Page
 	{
 		NedvizhdbContext _context = new();
-		Client Client { get; set; }
-		public ClientCreatePage()
+		Agent Agent { get; set; }
+		public AgentCreatePage()
 		{
 			InitializeComponent();
-			Client = new Client();
-			DataContext = new List<Client> { Client };
+			Agent = new Agent();
+			DataContext = Agent;
 		}
-		public ClientCreatePage(Client client)
+		public AgentCreatePage(Agent agent)
 		{
 			InitializeComponent();
-			Client = client;
-			DataContext = new List<Client> { Client };
+			Agent = agent;
+			DataContext = Agent;
 		}
 		private async void SaveChangesButton_Click(object sender, RoutedEventArgs e)
 		{
 			try
 			{
-				Client currentClient = (Client)((Button)sender).Tag;
-				if (currentClient.Email.IsNullOrEmpty() || currentClient.Phone.IsNullOrEmpty()) { MessageBox.Show("Необходимо заполнить поля Email и Phone!"); return; }
-				if (!Validator.IsValidEmail(currentClient.Email)) { MessageBox.Show("Некорректные данные почты. Пожалуйста, проверьте введенные значения."); return; }
-				if (Client.Id == 0)
+				Agent currentAgent = (Agent)((Button)sender).Tag;
+				if (currentAgent.FirstName.IsNullOrEmpty() || currentAgent.LastName.IsNullOrEmpty() || currentAgent.MiddleName.IsNullOrEmpty()) { MessageBox.Show("Необходимо заполнить ФИО"); return; }
+				if (Convert.ToInt32(currentAgent.DealShare) < 0 || Convert.ToInt32(currentAgent.DealShare) > 100) { MessageBox.Show("Доля может быть от 0 до 100"); return; }
+				if (Agent.Id == 0)
 				{
-					var lastClient = await _context.Clients.OrderBy(c => c.Id).LastAsync();
-					Client.Id = lastClient.Id + 1;
-					_context.Clients.Add(Client);
+					var lastClient = await _context.Agents.OrderBy(c => c.Id).LastAsync();
+					Agent.Id = lastClient.Id + 1;
+					_context.Agents.Add(Agent);
 				}
 				else
 				{
-					_context.Clients.Update(Client);
+					_context.Agents.Update(Agent);
 				}
 				await _context.SaveChangesAsync();
 				MessageBox.Show("Изменения сохранены успешно.");
@@ -67,8 +67,9 @@ namespace Praktika.Views.ClientPages
 
 		private void ClientBackButton_Click(object sender, RoutedEventArgs e)
 		{
-			ClientListPage clientListPage = new();
-			Window.GetWindow(this).Content = clientListPage;
+			AgentListPage agentListPage = new();
+			Window.GetWindow(this).Content = agentListPage;
 		}
 	}
 }
+

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Praktika.Models;
+using Praktika.Views.DemandPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,54 +14,51 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Praktika.Models;
-using Praktika.Views.ClientPages;
 
-
-namespace Praktika.Views.ClientPages
+namespace Praktika.Views.SupplyPages
 {
-	/// <summary>
-	/// Логика взаимодействия для ClientListPage.xaml
-	/// </summary>
-	public partial class ClientListPage : Page
-	{
+    /// <summary>
+    /// Логика взаимодействия для SupplyListPage.xaml
+    /// </summary>
+    public partial class SupplyListPage : Page
+    {
 		NedvizhdbContext NedvizhdbContext = new NedvizhdbContext();
-		public ClientListPage()
+		public SupplyListPage()
 		{
 			InitializeComponent();
-			DataContext = NedvizhdbContext.Clients.ToList();
+			DataContext = NedvizhdbContext.Supplies.ToList();
 		}
 
 		private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			Client client = ClientsGrid.SelectedItem as Client;
-			if (client == null) return;
-			if (client.Supplies.Count > 0 || client.Demands.Count>0) { MessageBox.Show("Нельзя удалить клиента с предложением или потребностью"); return; }
-			NedvizhdbContext.Clients.Remove(client);
+			Supply supply = SuppliesGrid.SelectedItem as Supply;
+			if (supply == null) return;
+			if (supply.Deals.Count > 0) { MessageBox.Show("Нельзя удалить потребность, участвующую в сделке"); return; }
+			NedvizhdbContext.Supplies.Remove(supply);
 			NedvizhdbContext.SaveChanges();
 			RefreshUserList();
 		}
 		private void RefreshUserList()
 		{
-			var clients = NedvizhdbContext.Clients.ToList();
-			ClientsGrid.ItemsSource = clients;
+			var supply = NedvizhdbContext.Supplies.ToList();
+			SuppliesGrid.ItemsSource = supply;
 		}
 		private void AddUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			ClientCreatePage clientCreatePage = new ClientCreatePage();
-			Window.GetWindow(this).Content = clientCreatePage;
+			SupplyCreatePage supplyCreatePage = new SupplyCreatePage();
+			Window.GetWindow(this).Content = supplyCreatePage;
 		}
 
 		private void EditUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			Client client = ClientsGrid.SelectedItem as Client;
-			if (client == null)
+			Supply supply = SuppliesGrid.SelectedItem as Supply;
+			if (supply == null)
 			{
 				MessageBox.Show("Выберите клиента для изменения");
 				return;
 			}
-			ClientCreatePage clientCreatePage = new ClientCreatePage(client);
-			Window.GetWindow(this).Content = clientCreatePage;
+			SupplyCreatePage supplyCreatePage = new SupplyCreatePage(supply);
+			Window.GetWindow(this).Content = supplyCreatePage;
 
 		}
 		private void BackButton_Click(object sender, RoutedEventArgs e)
