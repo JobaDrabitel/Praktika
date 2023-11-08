@@ -41,6 +41,11 @@ namespace Praktika.Views.RealtyPages
 		{
 			try
 			{
+				if (!(Realty.AddressHouse is int) || !(Realty.AddressNumber is int))
+				{
+					MessageBox.Show("Номер дома должен быть целым числом");
+					return;
+				}
 				Realty currentRealty = (Realty)((Button)sender).Tag;
 				if (Realty.Id == 0)
 				{

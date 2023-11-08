@@ -13,7 +13,7 @@
             <Button HorizontalAlignment="Left" Width="100" x:Name="BackButton" Click="BackButton_Click">Назад</Button>
         <TextBox x:Name="AddressFilterTextBox"  Width="300" HorizontalAlignment="Center" Margin="150 0 0 0" KeyUp="AddressFilterTextBox_KeyUp" />
         </StackPanel>
-        <DataGrid Height="325" IsReadOnly="True" x:Name="RealtiesGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding}">
+        <DataGrid Height="350" IsReadOnly="True" x:Name="RealtiesGrid" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Realty ID" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Address City" Binding="{Binding AddressCity}" />

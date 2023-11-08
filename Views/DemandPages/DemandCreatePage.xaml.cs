@@ -49,7 +49,7 @@ namespace Praktika.Views.DemandPages
 			{
 				Demand currentDemand = (Demand)((Button)sender).Tag;
 			
-				if (Convert.ToInt32(currentDemand.MinPrice) < 0 || Convert.ToInt32(currentDemand.MinPrice) < 0) 
+				if (Convert.ToInt32(MinPriceTB.Text) < 0 || Convert.ToInt32(MaxPriceTB.Text) < 0) 
 				{
 					MessageBox.Show("Минимальная цена и максимальная цена - целые положительные числа.");
 					return;

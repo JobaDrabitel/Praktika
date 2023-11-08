@@ -26,7 +26,7 @@ namespace Praktika.Views.AgentPages
 		public AgentListPage()
 		{
 			InitializeComponent();
-			DataContext = NedvizhdbContext.Clients.ToList();
+			DataContext = NedvizhdbContext.Agents.ToList();
 		}
 		private void DeleteAgentButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -53,7 +53,7 @@ namespace Praktika.Views.AgentPages
 			Agent agent = AgentsGrid.SelectedItem as Agent;
 			if (agent == null)
 			{
-				MessageBox.Show("Выберите клиента для изменения");
+				MessageBox.Show("Выберите риелтора для изменения");
 				return;
 			}
 			AgentCreatePage clientCreatePage = new AgentCreatePage(agent);
