@@ -250,7 +250,7 @@
             <Style TargetType="{x:Type DataGridRow}">
                 <Style.Triggers>
                     <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                        <Setter Property="Background" Value="#0096FF"></Setter>
+                        <Setter Property="Background" Value="#ADD8E6"></Setter>
                     </Trigger>
                     <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                         <Setter Property="Background" Value="#89CFF0"></Setter>

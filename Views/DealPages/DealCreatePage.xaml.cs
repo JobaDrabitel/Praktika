@@ -48,13 +48,7 @@ namespace Praktika.Views.DealPages
 		{
 			try
 			{
-				Demand currentDemand = (Demand)((Button)sender).Tag;
-
-				if (Convert.ToInt32(currentDemand.MinPrice) < 0 || Convert.ToInt32(currentDemand.MinPrice) < 0)
-				{
-					MessageBox.Show("Минимальная цена и максимальная цена - целые положительные числа.");
-					return;
-				}
+				Deal currentDemand = (Deal)((Button)sender).Tag;
 				if (Deal.Id == 0)
 				{
 					var lastDemand = await _context.Demands.OrderBy(c => c.Id).LastAsync();

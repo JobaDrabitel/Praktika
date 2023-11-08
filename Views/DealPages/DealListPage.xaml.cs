@@ -44,7 +44,7 @@ namespace Praktika.Views.DealPages
 		}
 		private void AddUserButton_Click(object sender, RoutedEventArgs e)
 		{
-			DemandCreatePage demandCreatePage = new DemandCreatePage();
+			DealCreatePage demandCreatePage = new DealCreatePage();
 			Window.GetWindow(this).Content = demandCreatePage;
 		}
 
