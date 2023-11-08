@@ -88,8 +88,9 @@ namespace Praktika.Views.RealtyPages
 
 		private void BackButton_Click(object sender, RoutedEventArgs e)
 		{
-			MainWindow main = new();
-			Window.GetWindow(this).Content = main.Content;
+			MainWindow mainWindow = new MainWindow();
+			mainWindow.Show();
+			Window.GetWindow(this).Close();
 		}
 	}
 }

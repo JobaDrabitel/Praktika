@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,7 +65,8 @@ namespace Praktika.Views.SupplyPages
 		private void BackButton_Click(object sender, RoutedEventArgs e)
 		{
 			MainWindow mainWindow = new MainWindow();
-			Window.GetWindow(this).Content = mainWindow.Content;
+			mainWindow.Show();
+			Window.GetWindow(this).Close();
 		}
 	}
 }

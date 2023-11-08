@@ -65,7 +65,8 @@ namespace Praktika.Views.ClientPages
 		private void BackButton_Click(object sender, RoutedEventArgs e)
 		{
 			MainWindow mainWindow = new MainWindow();
-			Window.GetWindow(this).Content = mainWindow.Content;
+			mainWindow.Show();
+			Window.GetWindow(this).Close();
 		}
 	}
 }
