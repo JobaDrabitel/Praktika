@@ -20,7 +20,7 @@
                                 <DataTemplate>
                                     <TextBlock>
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0}, {1}, {2}">
+                                            <MultiBinding StringFormat="{}{0}, {1}">
                                                 <Binding Path="Id" />
                                                 <Binding Path="AddressStreet" />
                                             </MultiBinding>

@@ -6,12 +6,24 @@
         xmlns:local="clr-namespace:Praktika"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" Background="#89CFF0">
-    <WrapPanel>
-        <Button x:Name="ClientListButton" Click="ClientListButton_Click">Client List</Button>
-        <Button x:Name="AgentListButton" Click="AgentListButton_Click">Agent List</Button>
-        <Button x:Name="RealtyListButton" Click="RealtyListButton_Click">Realty List</Button> 
-        <Button x:Name="DemandListButton" Click="DemandListButton_Click">Demand List</Button>
-        <Button x:Name="SupplyListButton" Click="SupplyListButton_Click">Supply List</Button>
-        <Button x:Name="DealListButton" Click="DealListButton_Click">Deal List</Button>
-    </WrapPanel>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+        <Image Margin="10" Source="Resources/logo.png" Width="150" Height="100" />
+            <TextBlock Margin="20 -20 0 0" FontSize="48">Добро пожаловать</TextBlock>
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <Button Margin="90 40 0 40" Width="150" x:Name="ClientListButton" Click="ClientListButton_Click">Список Клиентов</Button>
+            <Button Margin="90 0 0 0" Width="150" x:Name="AgentListButton" Click="AgentListButton_Click">Список риелторов</Button>
+            <Button Margin="90 0 0 0" Width="150" x:Name="RealtyListButton" Click="RealtyListButton_Click">Список недвижимости</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="90 40 0 40" Width="150" x:Name="DemandListButton" Click="DemandListButton_Click">Список потребностей</Button>
+                <Button Margin="90 0 0 0" Width="150" x:Name="SupplyListButton" Click="SupplyListButton_Click">Список предложений</Button>
+                <Button Margin="90 0 0 0" Width="150" x:Name="DealListButton" Click="DealListButton_Click">Список сделок</Button>
+            </StackPanel>
+            
+                
+        </StackPanel>
+    </StackPanel>
 </Window>

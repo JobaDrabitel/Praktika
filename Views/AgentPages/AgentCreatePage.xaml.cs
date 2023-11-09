@@ -31,12 +31,14 @@ namespace Praktika.Views.AgentPages
 			InitializeComponent();
 			Agent = new Agent();
 			DataContext = Agent;
+			ClientItemControl.DataContext = Agent;
 		}
 		public AgentCreatePage(Agent agent)
 		{
 			InitializeComponent();
 			Agent = agent;
-			DataContext = Agent;
+			DataContext = Agent; 
+			ClientItemControl.DataContext = Agent;
 		}
 		private async void SaveChangesButton_Click(object sender, RoutedEventArgs e)
 		{

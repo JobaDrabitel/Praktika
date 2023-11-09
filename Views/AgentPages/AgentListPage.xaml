@@ -16,7 +16,7 @@
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
                 <DataGridTextColumn Header="Last Name" Binding="{Binding MiddleName}" />
-                <DataGridTextColumn Header="Email" Binding="{Binding DealShare}" />
+                <DataGridTextColumn Header="DealShare" Binding="{Binding DealShare}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Horizontal">

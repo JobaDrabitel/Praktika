@@ -11,30 +11,24 @@
     <StackPanel>
         <Button HorizontalAlignment="Left" Width="100" x:Name="ClientBackButton" Click="ClientBackButton_Click">Назад</Button>
         <ItemsControl x:Name="ClientItemControl" ItemsSource="{Binding}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Gray" Tag="{Binding}">
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Изображение товара -->
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Grid.Column="0" Text="First Name" FontSize="14" Margin="0,10,10,0" />
-                                <TextBox Margin="10" x:Name="FirstNameTextBox" Width="150" Grid.Column="1" Text="{Binding FirstName}" FontSize="14" />
-                                <TextBlock Grid.Column="2" Text="Last Name" FontSize="14" Margin="10,10,10,0" />
-                                <TextBox Margin="10" x:Name="LastNameTextBox" Width="150" Grid.Column="3" Text="{Binding LastName}" FontSize="14" />
-                                <TextBlock Grid.Column="2" Text="Last Name" FontSize="14" Margin="10,10,10,0" />
-                                <TextBox Margin="10" x:Name="MiddleNameTextBox" Width="150" Grid.Column="3" Text="{Binding MiddleName}" FontSize="14" />
-                            </StackPanel  >
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock  Text="Email" FontSize="14" Margin="5,10,10,0" />
-                                <TextBox Margin="10" x:Name="DealShareTB" Width="150" Grid.Column="1" Text="{Binding DealShare}" FontSize="14" />
-                            </StackPanel>
-                            <Button Margin="10" Tag="{Binding}" Content="Сохранить изменения" x:Name="SaveChangesButton" Click="SaveChangesButton_Click" Height="30" Width="150" Background="#d10024" Foreground="White" />
+            <Border BorderBrush="Gray" Tag="{Binding}">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Grid.Column="0" Text="First Name" FontSize="14" Margin="0,10,10,0" />
+                        <TextBox Margin="10" x:Name="FirstNameTextBox" Width="150" Grid.Column="1" Text="{Binding FirstName}" FontSize="14" />
+                        <TextBlock Grid.Column="2" Text="Last Name" FontSize="14" Margin="10,10,10,0" />
+                        <TextBox Margin="10" x:Name="LastNameTextBox" Width="150" Grid.Column="3" Text="{Binding LastName}" FontSize="14" />
+                        <TextBlock Grid.Column="2" Text="Last Name" FontSize="14" Margin="10,10,10,0" />
+                        <TextBox Margin="10" x:Name="MiddleNameTextBox" Width="150" Grid.Column="3" Text="{Binding MiddleName}" FontSize="14" />
+                    </StackPanel  >
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock  Text="Email" FontSize="14" Margin="5,10,10,0" />
+                        <TextBox Margin="10" x:Name="DealShareTB" Width="150" Grid.Column="1" Text="{Binding DealShare}" FontSize="14" />
+                    </StackPanel>
+                    <Button Margin="10" Tag="{Binding}" Content="Сохранить изменения" x:Name="SaveChangesButton" Click="SaveChangesButton_Click" Height="30" Width="150" Background="#d10024" Foreground="White" />
 
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-
-            </ItemsControl.ItemTemplate>
+                </StackPanel>
+            </Border>
         </ItemsControl>
     </StackPanel>
 </Page>
